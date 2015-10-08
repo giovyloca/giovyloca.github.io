@@ -32,10 +32,10 @@ The different namespace qualify the branch as stable and prevent potentially
 broken branches from being integrated into staging.
 
 A deploy script will:
-* Branch an ephemeral branch from master;
-* Merge all the integration branches;
+* Create an ephemeral branch from master
+* Merge all the integration branches (see http://giovyloca.github.io/git/stage.sh.txt)
 * Deploy the resulting codebase to the staging server
- (Pushing the branch if the deploy tool relies on git for transfer)
+  (Pushing the branch if the deploy tool relies on git for transfer)
 
 Note: there might be merge conflicts at this stage.
 Those need to be solved as usual.
