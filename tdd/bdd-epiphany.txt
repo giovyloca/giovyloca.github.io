@@ -1,0 +1,31 @@
+Extracted from a conversation on Slack
+
+Epiphany, BDD is how you TDD your tests :O
+This ends the BDD vs TDD argument :)
+
+Lets elaborate a bit:
+Ok, you write tests, let's say the old school way
+with a lot of $I->click('This'), $I->fill('That'), and thats unavoidable,
+at some point you have to translate the requirement with concrete actions.
+
+But how do you make sure that your test is actually covering the feature
+you want to test?
+Of course it will, because while you are writing it you are constantly
+translating from the domain to the app interface.
+But that's a lot of reasoning and that's why tests are easy to write,
+but you need a while to get into the context and understand what a test
+is testing when you read it.
+And even then, there is the risk that your test will only marginally check
+a behaviour.
+For example, sometimes I forget to test a feature with a different
+type of user.
+So, how do you ensure the correctness of your test?
+With another test, TDD works here as well!
+But off course it will be a test with an higher level of abstraction,
+expressed in the BDD language (the one with Dan North's terminology,
+Codeception gets it wrong).
+In practice nothing change if you use something like Cucumber or Behat
+because you are forced to do the translation step after writing the scenario.
+But if you make the shift that BDD doesn't tests your app, but your
+(functional) tests, maybe good things will come.
+
