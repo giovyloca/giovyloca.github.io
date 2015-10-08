@@ -1,0 +1,69 @@
+1. Rationale
+Gitflow doesn't work well for projects based on continuous release.
+GithubFlow appears to simplistic.
+
+The following workflow answers the needs of
+* Having a number of developers working in parallel on different features
+* Being able to deploy to a staging area more than a single feature at a time
+
+2. Foundation
+* There only one eternal branch, traditionally called Master
+* Everything in Master is ready to be deployed to production
+
+Apart from that, this workflow is unopinionated and can be integrated with any
+other policy regarding to code review and pull request.
+
+3. Adding code
+Every addition to the codebase starts by branching from Master.
+Using namespaces like "hotfix" and "feature" for new branches is considered
+good practice but their lifecycle is the same (as opposed to gitflow).
+We will refer to this branch as "the topic branch" from now on.
+
+The developer will work on the topic branch on his working copy.
+The branch may be pushed to a remote as a mean to:
+* Backup the work
+* Work on different machines
+* Collaboration between developers on the same topic branch
+
+4. Staging code
+When it comes time to deploy to staging for QA, push the branch to remote, but
+namespace it with integration/.
+The different namespace qualify the branch as stable and prevent potentially
+broken branches from being integrated into staging.
+
+A deploy script will:
+* Branch an ephemeral branch from master;
+* Merge all the integration branches;
+* Deploy the resulting codebase to the staging server
+ (Pushing the branch if the deploy tool relies on git for transfer)
+
+Note: there might be merge conflicts at this stage.
+Those need to be solved as usual.
+The same conflicts would eventually rise anyway. It is suggested to enable the
+rerere feature to avoid solving the same conflict more than once.
+
+If more changes are needed, those have to be made on the original topic branch,
+and redeployed to staging in the same way.
+
+5. Go to production
+Once satisfied with a change, the topic branch is merged back to Master,
+ready to be deployed.
+Once this is done, the remote integration branch can be deleted.
+
+Addendum 1. Rebasing
+This workflow doesn't intend to prescribe a rebasing strategy. It is up to the
+developer to decide case by case based on context.
+Still the workflow efficiency and consistency is not effected by favouring one
+strategy over the other or mixing them.
+
+Addendum 2. Compared to Gitflow
+Compared to Gitflow, dropping the Develop branch makes for a simpler and less
+error prone process.
+Hotfixes and features are treated the same, so there are even less rules to
+follow.
+Breaking the rules can't lead to an inconsistent state.
+
+Addendum 3. Compared to Githubflow
+Github flow is oblivious of any staging step. They would want Us to believe
+the code is deployed to production after peer review and only after that it
+may be merged into master.
