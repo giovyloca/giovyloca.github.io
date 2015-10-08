@@ -1,0 +1,11 @@
+Thoughts, ideas and processes by Giovanni Lo Castro[^1]
+
+Because I suffer from a bad case of Writer block, I resorted to writing my
+ideas in a raw format, with the intention of iteratively refine them with time.
+
+I call this a Repository Blog, or RepoBlog, or replog. If this becomes a thing,
+you heard it here first.
+
+Yes, I love plain text.
+
+[^1]: giovanni@dandelionlift.com
