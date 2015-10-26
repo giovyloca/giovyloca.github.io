@@ -1,3 +1,4 @@
+git fetch
 git checkout master
 git pull --rebase
 git branch -D ephemeral/stage
@@ -8,3 +9,4 @@ for i in `git branch -r | grep 'integration\/'`; do
     git merge --no-edit $i
 done
 
+git push origin ephemeral/stage --force
